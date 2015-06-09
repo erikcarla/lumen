@@ -15,7 +15,7 @@ $app->get('/', function() use ($app) {
     return $app->welcome();
 });
 
-resource('test', 'TestController');
+resource('template', 'TemplateController');
 
 function resource($uri, $controller)
 {
