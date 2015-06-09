@@ -15,3 +15,15 @@ $app->get('/', function() use ($app) {
     return $app->welcome();
 });
 
+resource('test', 'TestController');
+
+function resource($uri, $controller)
+{
+	global $app;
+	
+	$app->get($uri, 'App\Http\Controllers\\'.$controller.'@index');
+	$app->get($uri.'/{id}', 'App\Http\Controllers\\'.$controller.'@show');
+	$app->post($uri, 'App\Http\Controllers\\'.$controller.'@store');
+	$app->put($uri.'/{id}', 'App\Http\Controllers\\'.$controller.'@update');
+	$app->delete($uri.'/{id}', 'App\Http\Controllers\\'.$controller.'@destroy');
+}
